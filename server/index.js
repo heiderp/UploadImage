@@ -3,7 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const tinify = require('tinify')
-tinify.key = 'ZwDmgQP9Jy6G7rvL1j6HSn5LyL5MPHYb'
+tinify.key = ''
 const multer = require('multer')
 
 const storage = multer.diskStorage({
