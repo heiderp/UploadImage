@@ -5,6 +5,7 @@ import Card from './Components/Card'
 import Loader from './Components/Loader'
 import usePostImage from './hooks/usePostImage'
 import Form from './Components/Form'
+import Preview from './Components/Preview'
 function App () {
   const [loading, setLoading] = useState(false)
   const [urlCompress, setUrlCompress] = useState(false)
@@ -18,13 +19,10 @@ function App () {
           {!loading &&
             <>
             {urlCompress
-              ? <>{urlCompress.map((url, i) => (
-                <p key={i}>{url}</p>
-              ))}
-              </>
-             : <Form handleLoading={handleLoading} handleUrlCompress={handleUrlCompress} />}
+              ? <Preview urlCompress={urlCompress} handleUrlCompress={handleUrlCompress} />
+              : <Form handleLoading={handleLoading} handleUrlCompress={handleUrlCompress} />}
            </>
-          }
+           }
         </Card>
       </Container>
     </div>

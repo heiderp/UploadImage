@@ -30,18 +30,36 @@
 .card__title{
   text-align: center;
 }
+
+/*FORM*/
+.compress__form{
+  display: flex;
+flex-direction: column;
+height: 100%;
+justify-content: space-around;
+gap: 50px;
+}
 /*Buttons*/
 .btn{
-  height: 2rem;
   width: 100%; 
-  background-color: #5678EF;
+  padding: .6rem 2rem;
+  background-color: #5275f5;
   color:#fefefe;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color .5s ease-in;
+  text-transform: uppercase;
+  transition: background-color .3s ease-in;
+}
+.btn:disabled{
+  cursor: auto;
+  background:#6b7fca;
+  transition: none;
+}
+.btn:disabled:hover{
+  background:#6b7fca;
 }
 .btn:hover{
-  background:#6b7fca;
+  background-color: #2855fa;
 }
 /*Dropzone*/
 .dropzone{
@@ -56,15 +74,28 @@
   align-items: center;
   flex-direction: column;
 }
-/*LIST IMAGE*/
-.list_image{
-  width: 100%;
-  min-height: 40vh;
-  background-color: #fefefe;
+/*PREVIEW*/
+.preview{
   display: flex;
-  overflow: auto hidden;
-  padding: 1rem;
-  gap:1rem;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  gap: 15px;
+  width: 100%;
+  /* min-height: 30vh;
+  max-height: 50vh; */
+  height: 80%;
+  margin-top: 20px;
+}
+.preview__image{
+  max-height: 30vh;
+  margin: 0 25%;
+}
+.preview__input{
+  padding:5px;
+  outline: none;
+  background: #efefef;
+  border: none;
+  border-bottom: 1px solid #000;
 }
 
 img {

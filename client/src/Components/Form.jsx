@@ -8,8 +8,10 @@ const Form = ({ handleLoading, handleUrlCompress }) => {
   const [images, setImages] = useState([])
   const handleDrop = useCallback(acceptedFiles => {
     acceptedFiles.forEach(el => {
-      setImages(prevState => [
-        ...prevState, el])
+      /* setImages(prevState => [
+        ...prevState, el]) */
+        console.log(el.name)
+        setImages([el])
     })
   }, [])
 
@@ -33,7 +35,7 @@ const Form = ({ handleLoading, handleUrlCompress }) => {
       .catch(err => console.log(err))
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='compress__form' onSubmit={handleSubmit}>
       <DropZone accept={accept} onDrop={handleDrop} images={images} />
       <Button images={images} />
     </form>

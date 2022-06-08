@@ -3,9 +3,9 @@ const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const tinify = require('tinify')
-tinify.key = ''
+tinify.key = 'ZwDmgQP9Jy6G7rvL1j6HSn5LyL5MPHYb'
 const multer = require('multer')
-
+const fs = require('fs')
 const storage = multer.diskStorage({
     destination: function(req,file,cb){
         cb(null,'./uploads')
@@ -20,7 +20,7 @@ const upload= multer({storage});
 app.use(cors());
 app.set('port', process.env.PORT || 3002);
 app.disable('x-powered-by');
-const host = 'localhost'
+const host = 'http://localhost'
 const port = app.get('port')
 const publicAdress = host.concat(':').concat(port)
 
@@ -38,7 +38,7 @@ app.get('/', upload.array('files',6), async(req, res) => {
 app.post('/img',upload.array('files',6),async(req,res) => {
     const { files } = req
     let result = []
-    files.forEach(file => {
+   /*  files.forEach(file => {
         const { path, originalname,size } = file
         const source = tinify.fromFile(path);
         const location = `public/${originalname}`
@@ -46,6 +46,21 @@ app.post('/img',upload.array('files',6),async(req,res) => {
         source.toFile(location);
         result = [...result,userURL]
         res.json({ result })
+    }) */
+    files.forEach(file => {
+        const { path, originalname} = file
+        const userURL = `${publicAdress}/public/${originalname}`
+        const location = `public/${originalname}`
+        fs.readFile(path,(err,source) => {
+            if (err) throw err
+            tinify.fromBuffer(source).toBuffer(function(err, resultData) {
+                if (err) throw err;
+                fs.writeFile(location,resultData, error => {
+                    if (error) throw error
+                    res.json({result:userURL})
+                })
+              });
+        })
     })
 })
 
