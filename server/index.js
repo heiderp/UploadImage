@@ -53,11 +53,13 @@ app.post('/img',upload.array('files',6),async(req,res) => {
         const location = `public/${originalname}`
         fs.readFile(path,(err,source) => {
             if (err) throw err
+            const toBytesInput = source.byteLength / 1024
             tinify.fromBuffer(source).toBuffer(function(err, resultData) {
                 if (err) throw err;
+                const toBytesOutput = resultData.byteLength/1024
                 fs.writeFile(location,resultData, error => {
                     if (error) throw error
-                    res.json({result:userURL})
+                    res.json({result:userURL,compress:{toBytesInput,toBytesOutput}})
                 })
               });
         })
