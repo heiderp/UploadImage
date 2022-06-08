@@ -3,7 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const tinify = require('tinify')
-tinify.key = 'ZwDmgQP9Jy6G7rvL1j6HSn5LyL5MPHYb'
+tinify.key = ''
 const multer = require('multer')
 const fs = require('fs')
 const storage = multer.diskStorage({
@@ -38,15 +38,6 @@ app.get('/', upload.array('files',6), async(req, res) => {
 app.post('/img',upload.array('files',6),async(req,res) => {
     const { files } = req
     let result = []
-   /*  files.forEach(file => {
-        const { path, originalname,size } = file
-        const source = tinify.fromFile(path);
-        const location = `public/${originalname}`
-        const userURL = `${publicAdress}/public/${originalname}`
-        source.toFile(location);
-        result = [...result,userURL]
-        res.json({ result })
-    }) */
     files.forEach(file => {
         const { path, originalname} = file
         const userURL = `${publicAdress}/public/${originalname}`

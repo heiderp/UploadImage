@@ -8,28 +8,20 @@ const Form = ({ handleLoading, handleUrlCompress }) => {
   const [images, setImages] = useState([])
   const handleDrop = useCallback(acceptedFiles => {
     acceptedFiles.forEach(el => {
-      /* setImages(prevState => [
-        ...prevState, el]) */
-        console.log(el.name)
-        setImages([el])
+      setImages([el])
     })
   }, [])
 
   const handleSubmit = e => {
     e.preventDefault()
     handleLoading(true)
-    console.log('cargando')
-
     const formData = new FormData()
     images.forEach(img => {
       formData.append('files', img)
     })
-    console.log(formData)
     upload(formData)
       .then(res => {
-        console.log(res.data)
-        console.log('ready')
-        handleUrlCompress(res.data.result)
+        handleUrlCompress(res.data)
         handleLoading(false)
       })
       .catch(err => console.log(err))
