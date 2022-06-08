@@ -1,0 +1,114 @@
+/*Containeer*/
+.container{
+  width: 100%;height: 100vh;
+  background-color: #7e93df;
+  margin: 0 auto;
+  padding: 5% 20%;
+  display: grid;
+  gap:1rem;
+}
+/*Card*/
+.card{
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card__container{
+  background-color: #fefefe;
+  height: 60vh;
+  width: 80%;
+  padding:2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column;
+  -webkit-box-shadow: 0px 9px 17px -1px rgba(0,0,0,0.77);
+  -moz-box-shadow: 0px 9px 17px -1px rgba(0,0,0,0.77);
+  box-shadow: 0px 9px 17px -1px rgba(0,0,0,0.77);
+}
+.card__title{
+  text-align: center;
+}
+/*Buttons*/
+.btn{
+  height: 2rem;
+  width: 100%; 
+  background-color: #5678EF;
+  color:#fefefe;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color .5s ease-in;
+}
+.btn:hover{
+  background:#6b7fca;
+}
+/*Dropzone*/
+.dropzone{
+  text-align: center;
+  padding: 20px;
+  background: #f1f1f1;
+  border: 1px rgb(22, 22, 22) dashed;
+  width: 100%; height: 30vh;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/*LIST IMAGE*/
+.list_image{
+  width: 100%;
+  min-height: 40vh;
+  background-color: #fefefe;
+  display: flex;
+  overflow: auto hidden;
+  padding: 1rem;
+  gap:1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/*Loader*/
+.spinner__container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spinner {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-right-color: #5678EF;
+  animation: spinner-a4dj62 1s infinite linear;
+ }
+ 
+ .spinner::before,
+ .spinner::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+  animation: spinner-a4dj62 2s infinite;
+ }
+ 
+ .spinner::after {
+  margin: 8px;
+  animation-duration: 3s;
+ }
+ 
+ @keyframes spinner-a4dj62 {
+  100% {
+   transform: rotate(1turn);
+  }
+ }
